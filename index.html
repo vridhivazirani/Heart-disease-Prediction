@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heart Disease Risk Prediction System</title>
+  <meta name="description" content="An AI-powered heart disease risk prediction system using clinical indicators." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Floating decorative blood cells -->
+  <div class="bg-decor" aria-hidden="true">
+    <div class="cell cell-1"></div>
+    <div class="cell cell-2"></div>
+    <div class="cell cell-3"></div>
+    <div class="cell cell-4"></div>
+    <div class="cell cell-5"></div>
+    <div class="cell cell-6"></div>
+    <div class="gear gear-1">&#9881;</div>
+    <div class="gear gear-2">&#9881;</div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="heart-icon">&#10084;</div>
+        <div class="brand-text">
+          <span class="brand-name">CardioScan</span>
+          <span class="brand-tagline">Woxsen University · B.Tech CSE (Data Science) 2026</span>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#predict">Predict</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1 class="hero-title">Heart Disease<br /><span class="accent">Risk Prediction</span><br />System</h1>
+      <p class="hero-subtitle">
+        Enter your clinical indicators below. Our AI model — trained on the UCI Heart Disease dataset — estimates your cardiovascular risk instantly, in your browser.
+      </p>
+      <a href="#predict" class="cta-btn">Start Prediction &darr;</a>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="heart-ring">
+        <div class="heart-big">&#10084;</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM SECTION -->
+  <section class="predict-section" id="predict">
+    <div class="section-container">
+      <h2 class="section-title">Enter Your Clinical Data</h2>
+      <p class="section-sub">All fields are required. Results are for educational purposes only — always consult a physician.</p>
+
+      <form id="predict-form" novalidate>
+        <div class="form-grid">
+
+          <!-- Age -->
+          <div class="form-group">
+            <label for="age">Age <span class="unit">(years)</span></label>
+            <input type="number" id="age" min="1" max="120" placeholder="e.g. 55" required />
+          </div>
+
+          <!-- Sex -->
+          <div class="form-group">
+            <label for="sex">Biological Sex</label>
+            <select id="sex" required>
+              <option value="">— select —</option>
+              <option value="1">Male</option>
+              <option value="0">Female</option>
+            </select>
+          </div>
+
+          <!-- Chest Pain Type -->
+          <div class="form-group">
+            <label for="cp">Chest Pain Type</label>
+            <select id="cp" required>
+              <option value="">— select —</option>
+              <option value="3">Typical Angina</option>
+              <option value="1">Atypical Angina</option>
+              <option value="2">Non-Anginal Pain</option>
+              <option value="0">Asymptomatic</option>
+            </select>
+          </div>
+
+          <!-- Resting BP -->
+          <div class="form-group">
+            <label for="trestbps">Resting Blood Pressure <span class="unit">(mm Hg)</span></label>
+            <input type="number" id="trestbps" min="60" max="250" placeholder="e.g. 130" required />
+          </div>
+
+          <!-- Cholesterol -->
+          <div class="form-group">
+            <label for="chol">Serum Cholesterol <span class="unit">(mg/dl)</span></label>
+            <input type="number" id="chol" min="100" max="600" placeholder="e.g. 240" required />
+          </div>
+
+          <!-- Fasting Blood Sugar -->
+          <div class="form-group">
+            <label for="fbs">Fasting Blood Sugar &gt; 120 mg/dl</label>
+            <select id="fbs" required>
+              <option value="">— select —</option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </div>
+
+          <!-- Resting ECG -->
+          <div class="form-group">
+            <label for="restecg">Resting ECG Results</label>
+            <select id="restecg" required>
+              <option value="">— select —</option>
+              <option value="0">Normal</option>
+              <option value="1">ST-T Wave Abnormality</option>
+              <option value="2">Left Ventricular Hypertrophy</option>
+            </select>
+          </div>
+
+          <!-- Max Heart Rate -->
+          <div class="form-group">
+            <label for="thalach">Max Heart Rate Achieved <span class="unit">(bpm)</span></label>
+            <input type="number" id="thalach" min="60" max="220" placeholder="e.g. 150" required />
+          </div>
+
+          <!-- Exercise Angina -->
+          <div class="form-group">
+            <label for="exang">Exercise-Induced Angina</label>
+            <select id="exang" required>
+              <option value="">— select —</option>
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </div>
+
+          <!-- Oldpeak -->
+          <div class="form-group">
+            <label for="oldpeak">ST Depression (Oldpeak)</label>
+            <input type="number" id="oldpeak" min="0" max="10" step="0.1" placeholder="e.g. 1.5" required />
+          </div>
+
+          <!-- Slope -->
+          <div class="form-group">
+            <label for="slope">Slope of Peak ST Segment</label>
+            <select id="slope" required>
+              <option value="">— select —</option>
+              <option value="2">Upsloping</option>
+              <option value="1">Flat</option>
+              <option value="0">Downsloping</option>
+            </select>
+          </div>
+
+          <!-- CA -->
+          <div class="form-group">
+            <label for="ca">Major Vessels Coloured by Fluoroscopy</label>
+            <select id="ca" required>
+              <option value="">— select —</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+
+          <!-- Thal -->
+          <div class="form-group">
+            <label for="thal">Thalassemia</label>
+            <select id="thal" required>
+              <option value="">— select —</option>
+              <option value="3">Normal</option>
+              <option value="6">Fixed Defect</option>
+              <option value="7">Reversible Defect</option>
+            </select>
+          </div>
+
+        </div><!-- /.form-grid -->
+
+        <div class="form-footer">
+          <button type="submit" id="predict-btn" class="predict-btn">
+            <span class="btn-icon">&#10084;</span> Predict Risk
+          </button>
+        </div>
+      </form>
+
+      <!-- RESULT -->
+      <div id="result-card" class="result-card hidden" aria-live="polite">
+        <div class="result-inner">
+          <div class="gauge-wrap">
+            <svg class="gauge-svg" viewBox="0 0 200 110" aria-hidden="true">
+              <path class="gauge-track" d="M10,100 A90,90 0 0,1 190,100" fill="none" stroke-width="14" stroke-linecap="round"/>
+              <path class="gauge-fill" id="gauge-arc" d="M10,100 A90,90 0 0,1 190,100" fill="none" stroke-width="14" stroke-linecap="round" stroke-dasharray="0 283"/>
+              <text x="100" y="96" text-anchor="middle" class="gauge-pct" id="gauge-pct-text">0%</text>
+              <text x="100" y="112" text-anchor="middle" class="gauge-label">Risk Score</text>
+            </svg>
+          </div>
+          <div class="verdict-wrap">
+            <div id="verdict-badge" class="verdict-badge">—</div>
+            <p id="result-message" class="result-message"></p>
+          </div>
+        </div>
+        <div id="feature-flags" class="feature-flags"></div>
+        <p class="disclaimer">⚠️ This result is for educational purposes only. Please consult a qualified medical professional.</p>
+      </div>
+
+    </div><!-- /.section-container -->
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="section-container">
+      <h2 class="section-title">About the Model</h2>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon">&#128202;</div>
+          <h3>Dataset</h3>
+          <p>UCI Heart Disease (Cleveland) — 303 patients, 13 clinical features, binary classification.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">&#129504;</div>
+          <h3>Algorithms</h3>
+          <p>Logistic Regression · SVM · Decision Tree · Random Forest — ensemble scoring for higher accuracy.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">&#128104;&#8205;&#128187;</div>
+          <h3>Team</h3>
+          <p>Kashish Mohammad · Vridhi Vazirani · Jaaswanth Chikkala · Mahadev · Mohith</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Woxsen University · Heart Disease Risk Prediction System</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
